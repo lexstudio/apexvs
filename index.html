@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One vs One Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/apexcharts" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .chart {
+            width: 45%;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .title {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="title">B vs CS finals</div>
+    <div class="container">
+        <div id="chart1" class="chart"></div>
+        <div id="chart2" class="chart"></div>
+        <div id="chart3" class="chart"></div>
+        <div id="chart4" class="chart"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script>
+        // Player 1 vs Player 2 Bar Chart
+        var options1 = {
+            chart: {
+                type: 'bar'
+            },
+            series: [{
+                name: 'B',
+                data: [15.63, 15.58, 15.65, 14.92, 15.53]
+            }, {
+                name: 'CS',
+                data: [15.66, 15.77, 15.55, 15.69, 15.75]
+            }],
+            xaxis: {
+                categories: ['Round 1', 'Round 2', 'Round 3', 'Round 4', 'Round 5']
+            },
+            title: {
+                text: 'Rounds result'
+            }
+        };
+
+        var chart1 = new ApexCharts(document.querySelector("#chart1"), options1);
+        chart1.render();
+
+        // Player 1 vs Player 2 Radar Chart
+        var options2 = {
+            chart: {
+                type: 'radar'
+            },
+            series: [{
+                name: 'B',
+                data: [85, 29, 7.94, 100]
+            }, {
+                name: 'CS',
+                data: [81, 34, 7.81, 100]
+            }],
+            labels: ['Algorithmics', 'Self', 'Solves per sec', 'Solves'],
+            title: {
+                text: 'Overall Attributes'
+            }
+        };
+
+        var chart2 = new ApexCharts(document.querySelector("#chart2"), options2);
+        chart2.render();
+
+        // Player 1 vs Player 2 Line Chart
+        var options3 = {
+            chart: {
+                type: 'bar'
+            },
+            series: [{
+                name: 'B',
+                data: [15.58]
+            }, {
+                name: 'CS',
+                data: [15.70]
+            }],
+            xaxis: {
+                categories: ['Overall ao5']
+            },
+            title: {
+                text: 'Performance Over Rounds'
+            }
+        };
+
+        var chart3 = new ApexCharts(document.querySelector("#chart3"), options3);
+        chart3.render();
+
+        // Player 1 vs Player 2 Donut Chart
+        var options4 = {
+            chart: {
+                type: 'donut'
+            },
+            series: [90, 10],
+            labels: ['B', 'CS'],
+            title: {
+                text: 'Win Ratio'
+            }
+        };
+
+        var chart4 = new ApexCharts(document.querySelector("#chart4"), options4);
+        chart4.render();
+    </script>
+</body>
+</html>
